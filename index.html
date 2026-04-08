@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demande d’aide et d’approbation de garantie</title>
+
+<style>
+:root {
+  --red:#c8102e;
+  --gray-dark:#2f2f2f;
+  --gray-light:#f5f5f5;
+  --gray-border:#ddd;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--gray-light);
+  margin:0;
+  padding:24px 10px;
+  color:var(--gray-dark);
+}
+
+.container {
+  max-width:960px;
+  margin:auto;
+}
+
+h2 {
+  color:var(--red);
+  margin-bottom:30px;
+}
+
+.section {
+  background:white;
+  border-left:6px solid var(--red);
+  border-radius:6px;
+  padding:20px 22px;
+  margin-bottom:25px;
+}
+
+/* ===== Radios rapprochés ===== */
+.radio-group {
+  margin-top:12px;
+}
+
+.radio-option {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:8px;
+}
+
+.radio-option input[type="radio"] {
+  width:18px;
+  height:18px;
+  margin:0;
+}
+
+.radio-option label {
+  cursor:pointer;
+  font-size:0.95em;
+}
+
+/* ===== Inputs ===== */
+input,
+select,
+textarea {
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border:1px solid var(--gray-border);
+  border-radius:4px;
+}
+
+textarea {
+  min-height:90px;
+  resize:vertical;
+}
+
+/* ===== Messages ===== */
+.warning {
+  background:#fff3cd;
+  border-left:4px solid #f0ad4e;
+  padding:10px;
+  margin-top:10px;
+  font-size:0.9em;
+}
+
+.info {
+  background:#e8f1fb;
+  border-left:4px solid #0c5460;
+  padding:10px;
+  margin-top:10px;
+  font-size:0.9em;
+}
+
+/* ===== DETAILS / SUMMARY (AIDE iOS NATIVE) ===== */
+details {
+  margin-top:10px;
+}
+
+details summary {
+  cursor:pointer;
+  color:var(--red);
+  font-weight:600;
+  list-style:none;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+details summary::before {
+  content:"▶ ";
+}
+
+details[open] summary::before {
+  content:"▼ ";
+}
+
+/* ===== Bouton ===== */
+button {
+  background:var(--red);
+  color:white;
+  border:none;
+  padding:14px 26px;
+  font-size:1em;
+  border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>Demande d’aide et d’approbation de garantie</h2>
+
+<form>
+
+<!-- 1 -->
+<div class="section">
+<strong>1. Réparation évitable (abus du client)</strong>
+
+<div class="radio-group">
+  <div class="radio-option">
+    <input type="radio" id="abus-oui" name="abus">
+    <label for="abus-oui">Oui</label>
+  </div>
+  <div class="radio-option">
+    <input type="radio" id="abus-non" name="abus">
+    <label for="abus-non">Non</label>
+  </div>
+</div>
+
+<details>
+  <summary>Voir l’aide</summary>
+  <div class="info">
+    Un abus inclut toute mauvaise utilisation, surcharge ou condition non conforme.
+    Les abus ne sont pas couverts par la garantie.
+  </div>
+</details>
+</div>
+
+<!-- 2 -->
+<div class="section">
+<strong>2. Type de demande</strong>
+
+<div class="radio-group">
+  <div class="radio-option">
+    <input type="radio" id="td-aut" name="typeDem">
+    <label for="td-aut">Autorisation de garantie</label>
+  </div>
+  <div class="radio-option">
+    <input type="radio" id="td-aide" name="typeDem">
+    <label for="td-aide">Demande d’aide</label>
+  </div>
+</div>
+
+<details>
+  <summary>Voir l’aide</summary>
+  <div class="info">
+    <b>Autorisation :</b> avant d’effectuer des travaux.<br>
+    <b>Aide :</b> support ou validation avant décision.
+  </div>
+</details>
+</div>
+
+<!-- 3 -->
+<div class="section">
+<strong>3. La réparation a‑t‑elle déjà été effectuée ?</strong>
+
+<div class="radio-group">
+  <div class="radio-option">
+    <input type="radio" id="rep-oui" name="rep">
+    <label for="rep-oui">Oui</label>
+  </div>
+  <div class="radio-option">
+    <input type="radio" id="rep-non" name="rep">
+    <label for="rep-non">Non</label>
+  </div>
+</div>
+
+<div class="warning">
+Vous devez avoir l’autorisation du responsable des garanties avant le début des travaux.
+</div>
+</div>
+
+<!-- 4 -->
+<div class="section">
+<strong>4. La pièce est‑elle toujours sous garantie ?</strong>
+
+<div class="radio-group">
+  <div class="radio-option">
+    <input type="radio" id="jde-oui" name="jde">
+    <label for="jde-oui">Oui</label>
+  </div>
+  <div class="radio-option">
+    <input type="radio" id="jde-non" name="jde">
+    <label for="jde-non">Non</label>
+  </div>
+</div>
+
+<details>
+  <summary>Voir la procédure JDE</summary>
+  <div class="info">
+    <ol>
+      <li>Ouvrir JDE</li>
+      <li>Sélectionner Raymond Parts Warranty</li>
+      <li>Entrer le numéro de pièce</li>
+      <li>Vérifier Warranty Period (temps et heures)</li>
+    </ol>
+  </div>
+</details>
+</div>
+
+<!-- 5 -->
+<div class="section">
+<strong>5. Type de garantie</strong>
+
+<select>
+  <option>Usine Raymond</option>
+  <option>Usine BT</option>
+  <option>Pièce 30 jours</option>
+  <option>Service de route</option>
+  <option>Garantie interne</option>
+  <option>Autre fabricant</option>
+</select>
+
+<details>
+  <summary>Aide sur les types de garantie</summary>
+  <div class="info">
+    Sélectionnez le type applicable : usine, pièce, service ou politique interne.
+  </div>
+</details>
+</div>
+
+<!-- 6 -->
+<div class="section">
+<strong>Dates</strong>
+
+<label>Date principale</label>
+<input type="date">
+
+<label>Date de la demande</label>
+<input type="date">
+
+<details>
+  <summary>Quelle date utiliser ?</summary>
+  <div class="info">
+    <ul>
+      <li>Garantie lift → date d’installation du lift</li>
+      <li>Garantie pièce → date d’installation de la pièce</li>
+      <li>Service → date de la réparation</li>
+    </ul>
+  </div>
+</details>
+</div>
+
+<!-- 7 -->
+<div class="section">
+<strong>Heures HD</strong>
+
+<input type="number" placeholder="Heures actuelles du lift">
+<input type="number" placeholder="Heures lors de l’installation de la pièce">
+
+<details>
+  <summary>Pourquoi ces heures ?</summary>
+  <div class="info">
+    Les heures servent à valider l’éligibilité de la garantie.
+  </div>
+</details>
+</div>
+
+<!-- 8 -->
+<div class="section">
+<strong>Bons de travail (WO)</strong>
+
+<input placeholder="Bon de travail original (obligatoire)">
+<input placeholder="Nouveau bon de travail (si disponible)">
+
+<details>
+  <summary>Aide</summary>
+  <div class="info">
+    Le bon de travail original est toujours requis.
+    Un nouveau bon peut ne pas exister lors d’une demande d’aide.
+  </div>
+</details>
+</div>
+
+<!-- 9 -->
+<div class="section">
+<strong>Identification de l’équipement</strong>
+<input placeholder="Marque">
+<input placeholder="Modèle">
+<input placeholder="Numéro de série">
+</div>
+
+<!-- 10 -->
+<div class="section">
+<strong>Pièce concernée</strong>
+<input>
+</div>
+
+<!-- 11 -->
+<div class="section">
+<strong>Description du problème</strong>
+<textarea></textarea>
+</div>
+
+<!-- 12 -->
+<div class="section">
+<strong>Photos disponibles</strong>
+
+<div class="radio-group">
+  <div class="radio-option">
+    <input type="radio" id="ph-oui" name="ph">
+    <label for="ph-oui">Oui</label>
+  </div>
+  <div class="radio-option">
+    <input type="radio" id="ph-non" name="ph">
+    <label for="ph-non">Non</label>
+  </div>
+</div>
+
+<details>
+  <summary>Information importante</summary>
+  <div class="info">
+    Si des photos sont disponibles, veuillez les joindre avant l’envoi du courriel.
+  </div>
+</details>
+</div>
+
+<button type="submit">Soumettre la demande</button>
+
+</form>
+</div>
+</body>
+</html>
